@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from random import randint choice
+from random import randint, choice
 
 def init_grille(taille):
   grille = []
