@@ -6,14 +6,21 @@ Created on Mon Apr 20 16:17:53 2026
 
 PROJET CANDY CRUSH
 """
+import numpy as np
+import matplotlib.pyplot as plt
+from random import uniform  # génération nb aléatoire sous numpy
+import tifffile as tiff   # importer des images .tif dans numpy
+np.set_printoptions(precision=2)  # limiter le nb de chiffres significatifs print
+
+
 
 def detecte_coordonnees_combinaison (griLle, i, j):
 """
-Renvoie une l i s t e con tenan t l e s coordonn é e s de to u s l e s bonbons
-appa r tenan t à l a combinai son du bonbon ( i , j ) .
+Renvoie une liste contenant les coordonnées de tous les bonbons
+appartenant à la combinaison du bonbon ( i , j ) .
 """
 
-def copuie_l(liste):
+def copie_l(liste):
     liste_c = []
     for i in range(len(liste)):
         ligne = []
