@@ -21,14 +21,7 @@ def grille_vide(taille):
     -------
     grille_np : matrice numpy de la grille vide
     """
-    
-    grille = []
-    for i in range(taille):
-        ligne = []
-        for j in range(taille):
-            ligne.append(0)
-        grille.append(ligne)
-    grille_vide_np = np.array(grille)
+    grille_vide_np = np.zeros([taille, taille])
     
     return grille_vide_np
     
@@ -42,3 +35,23 @@ def copie_l(liste):
             ligne.append(liste[i][j])
         liste_c.append(ligne)
     return liste_c
+
+
+
+def affiche_grille(jeu):
+    """
+    
+
+    Parameters
+    ----------
+    jeu : liste numpy du jeu.
+
+    Returns
+    -------
+    None.
+
+    """
+  for i in range(len(jeu)):
+      print()
+      for j in range(len(jeu[i])):
+          print(jeu[i][j],end=" ")
