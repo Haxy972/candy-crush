@@ -40,8 +40,6 @@ def copie_l(liste):
 
 def affiche_grille(jeu):
     """
-    
-
     Parameters
     ----------
     jeu : liste numpy du jeu.
@@ -49,9 +47,22 @@ def affiche_grille(jeu):
     Returns
     -------
     None.
-
     """
-  for i in range(len(jeu)):
-      print()
-      for j in range(len(jeu[i])):
-          print(jeu[i][j],end=" ")
+    for i in range(len(jeu)):
+        print()
+        for j in range(len(jeu[i])):
+            print(jeu[i][j],end=" ")
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          

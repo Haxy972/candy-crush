@@ -1,12 +1,26 @@
-import matplotlib.pyplot as plt
-from random import randint choice
+"""
+Created on friday 24 08:53:00 2026
 
-def init_grille(taille):
-  grille = []
-  return grille
-  
-def init_jeu(grille):
-  return 
+@author: Haxy
+
+PROJET CANDY CRUSH
+"""
+
+#import matplotlib.pyplot as plt
+import numpy as np
+from random import randint 
+import utils.list_util as utl
+
+def init_jeu(taille):
+
+    grille_np = utl.grille_vide(taille)
+    jeu = utl.copie_l(grille_np)
+    for i in range(taille):
+        for j in range(taille):
+            jeu[i][j] = randint(1, 4)
+    jeu_np = np.array(jeu)        
+    return jeu_np
+
 
 def detecte_coordonnees_combinaison (griLle, i, j):
   """
@@ -14,8 +28,4 @@ def detecte_coordonnees_combinaison (griLle, i, j):
   appartenant à la combinaison du bonbon ( i , j ) .
   """
 
-def affiche_grille(jeu):
-  for i in range(len(jeu)):
-      print()
-      for j in range(len(jeu[i])):
-          print(jeu[i][j],end=" ")
+
