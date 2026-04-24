@@ -12,6 +12,15 @@ from random import randint
 import utils.list_util as utl
 
 def init_jeu(taille):
+    """
+    Parameters
+    ----------
+    taille : (int) taille de la matrice 
+
+    Returns
+    -------
+    jeu_np :liste 2D numpy.
+    """
 
     grille_np = utl.grille_vide(taille)
     jeu = utl.copie_l(grille_np)
@@ -27,12 +36,6 @@ def detecte_coordonnees_combinaison (griLle, i, j):
   Renvoie une liste contenant les coordonnées de tous les bonbons
   appartenant à la combinaison du bonbon ( i , j ) .
   """
-
-def affiche_grille(jeu):
-  for i in range(len(jeu)):
-      print()
-      for j in range(len(jeu[i])):
-          print(jeu[i][j],end=" ")
 
 def saisie_coord(grille):
     """ 
