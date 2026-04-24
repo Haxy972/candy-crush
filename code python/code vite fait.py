@@ -13,6 +13,10 @@ import tifffile as tiff   # importer des images .tif dans numpy
 np.set_printoptions(precision=2)  # limiter le nb de chiffres significatifs print
 
 
+np.array([[0, 0, 0,0,0],[0, 0, 0,0,0],[0, 0, 0,0,0],[0, 0, 0,0,0],[0, 0, 0,0,0]])
+
+
+
 
 def detecte_coordonnees_combinaison (griLle, i, j):
 """
