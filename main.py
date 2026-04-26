@@ -48,6 +48,17 @@ def init_jeu(taille):
 
 
 def count_point(jeu):
+    """
+    compte le nomnbre de point à un instant donnée
+    Parameters
+    ----------
+    jeu : (liste) la grille candy crush
+
+    Returns
+    -------
+    count : (int) le nombre de alignement de trois dans la grille
+
+    """
     count = 0
     for i in range(len(jeu)):
         for j in range(1, len(jeu)-1):
