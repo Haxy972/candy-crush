@@ -11,6 +11,9 @@ import numpy as np
 from random import randint 
 import utils.list_util as utl
 
+
+
+
 def init_jeu(taille):
     """
     Parameters
@@ -24,11 +27,38 @@ def init_jeu(taille):
 
     grille_np = utl.grille_vide(taille)
     jeu = utl.copie_l(grille_np)
+    
     for i in range(taille):
         for j in range(taille):
             jeu[i][j] = randint(1, 4)
+            
+    while utl.three_in_a_row(jeu) == True:
+        for i in range(len(jeu)):
+            for j in range(1, len(jeu)-1):
+                if utl.three_in_a_line(jeu, i, j) == True:
+                    jeu[i][j] = randint(1, 4)
+        for i in range(1, len(jeu)-1):
+            for j in range(len(jeu)):
+                if utl.three_in_a_column(jeu, i, j) == True:
+                    jeu[i][j] = randint(1, 4)
     jeu_np = np.array(jeu)        
     return jeu_np
+
+
+
+
+def count_point(jeu):
+    count = 0
+    for i in range(len(jeu)):
+        for j in range(1, len(jeu)-1):
+            if utl.three_in_a_line(jeu, i, j) == True:
+                count += 1
+    for i in range(1, len(jeu)-1):
+        for j in range(len(jeu)):
+            if utl.three_in_a_line(jeu, i, j) == True:
+                count += 1       
+    return count
+
 
 
 def detecte_coordonnees_combinaison (griLle, i, j):
