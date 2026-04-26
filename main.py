@@ -42,7 +42,7 @@ def init_jeu(taille):
                 if utl.three_in_a_column(jeu, i, j) == True:
                     jeu[i][j] = randint(1, 4)
     jeu_np = np.array(jeu)        
-    return jeu_np
+    return jeu
 
 
 
@@ -66,11 +66,33 @@ def count_point(jeu):
                 count += 1
     for i in range(1, len(jeu)-1):
         for j in range(len(jeu)):
-            if utl.three_in_a_line(jeu, i, j) == True:
+            if utl.three_in_a_column(jeu, i, j) == True:
                 count += 1       
     return count
 
 
+def deplacement(jeu, point, direction):
+    nouveau_jeu = utl.copie_l(jeu)
+    if direction == "z" or direction == "8":
+        nouveau_jeu[point[1]][point[0]] = jeu[point[1]-1][point[0]]
+        nouveau_jeu[point[1]-1][point[0]] = jeu[point[1]][point[0]]
+    elif direction == "s" or direction == "2" :
+        nouveau_jeu[point[1]][point[0]] = jeu[point[1]+1][point[0]]
+        nouveau_jeu[point[1]+1][point[0]] = jeu[point[1]][point[0]]
+    elif direction == "q" or direction == "4":
+        nouveau_jeu[point[1]][point[0]] = jeu[point[1]][point[0]-1]
+        nouveau_jeu[point[1]][point[0]-1] = jeu[point[1]][point[0]]
+    elif direction == "d" or direction == "6":
+        nouveau_jeu[point[1]][point[0]] = jeu[point[1]][point[0]+1]
+        nouveau_jeu[point[1]][point[0]+1] = jeu[point[1]][point[0]]
+    return nouveau_jeu
+
+
+def fin_jeu(score):
+    fin = False
+    if score >= 100:
+        fin = True
+    return fin
 
 def detecte_coordonnees_combinaison (griLle, i, j):
   """
@@ -101,5 +123,47 @@ def saisie_coord(grille):
             print("Veuillez saisir un nombre.")
 
 
-liste = [[5, 5, 5, 5, 5], [5, 5, 5, 5, 5], [5, 5, 5, 5, 5], [5, 5, 5, 5, 5], [5, 5, 5, 5, 5]]
-print(saisie_coord(liste))
+
+
+
+
+
+
+
+
+#code du jeu
+
+jeu = init_jeu(int(input("taille de la grille: ")))
+print(np.array(jeu))
+print()
+print()
+score = 0
+while fin_jeu(score) == False:
+    point_choisit = (int(input("Saisissez X : ")), int(input("Saisissez Y : "))  )
+    print(point_choisit)
+    print()
+    print()
+    jeu = deplacement(jeu, point_choisit, input("deplacemnt_vers: "))
+    print(np.array(jeu))
+    print()
+    print()
+    score += count_point(jeu)
+    print(f"+ {count_point(jeu)} points ")
+    print(f"score: {score}")
+    jeu = utl.erase_line(jeu)
+    print(np.array(jeu))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

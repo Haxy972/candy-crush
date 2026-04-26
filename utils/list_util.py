@@ -62,7 +62,18 @@ def three_in_a_row(jeu):
     return row
 
 
-
+def erase_line(jeu):
+    nouveau_jeu = copie_l(jeu)
+    for i in range(len(jeu)):
+        for j in range(1, len(jeu)-1):
+            if three_in_a_line(jeu, i, j) == True:
+                nouveau_jeu[i][j] = nouveau_jeu[i][j-1] = nouveau_jeu[i][j+1] = 0
+    for i in range(1, len(jeu)-1):
+        for j in range(len(jeu)):
+            if three_in_a_column(jeu, i, j) == True:
+                nouveau_jeu[i][j] = nouveau_jeu[i-1][j] = nouveau_jeu[i+1][j] = 0     
+   
+    return nouveau_jeu
 
 
 
