@@ -136,10 +136,11 @@ def saisie_coord(grille):
 jeu = init_jeu(int(input("taille de la grille: ")))
 print(np.array(jeu))
 print()
+print("coordonée en bas à gauche: (1, 1)")
 print()
 score = 0
 while fin_jeu(score) == False:
-    point_choisit = (int(input("Saisissez X : ")), int(input("Saisissez Y : "))  )
+    point_choisit = (int(input("Saisissez X : "))-1, len(jeu) - int( input("Saisissez Y : "))  )
     print(point_choisit)
     print()
     print()
