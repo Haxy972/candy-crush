@@ -40,8 +40,7 @@ def init_jeu(taille):
         for i in range(1, len(jeu)-1):
             for j in range(len(jeu)):
                 if utl.three_in_a_column(jeu, i, j) == True:
-                    jeu[i][j] = randint(1, 4)
-    jeu_np = np.array(jeu)        
+                    jeu[i][j] = randint(1, 4)        
     return jeu
 
 
