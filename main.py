@@ -9,6 +9,7 @@ PROJET CANDY CRUSH
 #import matplotlib.pyplot as plt
 from random import randint 
 import utils.list_util as utl
+import utils.detection as detec
 
 
 
@@ -31,14 +32,14 @@ def init_jeu(taille):
         for j in range(taille):
             jeu[i][j] = randint(1, 4)
             
-    while utl.three_in_a_row(jeu) == True:
+    while detec.three_in_a_row(jeu) == True:
         for i in range(len(jeu)):
             for j in range(1, len(jeu)-1):
-                if utl.three_in_a_line(jeu, i, j) == True:
+                if detec.three_in_a_line(jeu, i, j) == True:
                     jeu[i][j] = randint(1, 4)
         for i in range(1, len(jeu)-1):
             for j in range(len(jeu)):
-                if utl.three_in_a_column(jeu, i, j) == True:
+                if detec.three_in_a_column(jeu, i, j) == True:
                     jeu[i][j] = randint(1, 4)        
     return jeu
 
@@ -60,11 +61,11 @@ def count_point(jeu):
     count = 0
     for i in range(len(jeu)):
         for j in range(1, len(jeu)-1):
-            if utl.three_in_a_line(jeu, i, j) == True:
+            if detec.three_in_a_line(jeu, i, j) == True:
                 count += 1
     for i in range(1, len(jeu)-1):
         for j in range(len(jeu)):
-            if utl.three_in_a_column(jeu, i, j) == True:
+            if detec.three_in_a_column(jeu, i, j) == True:
                 count += 1       
     return count
 
@@ -84,7 +85,7 @@ def deplacement(jeu, point, direction):
     elif direction == "d" or direction == "6":
         nouveau_jeu[point[1]][point[0]] = jeu[point[1]][point[0]+1]
         nouveau_jeu[point[1]][point[0]+1] = jeu[point[1]][point[0]]
-    if utl.three_in_a_row(nouveau_jeu) == True:
+    if detec.three_in_a_row(nouveau_jeu) == True:
         deplace = True
         jeu_rendu = nouveau_jeu
     else:
@@ -163,7 +164,8 @@ while fin_jeu(score) == False:
     score += count_point(jeu)
     print(f"+ {count_point(jeu)} points ")
     print(f"score: {score}")
-    jeu = utl.erase_line(jeu)
+    jeu = detec.erase_line(jeu)
+    utl.fall_l(jeu)
     utl.affiche_grille(jeu)
 
 
