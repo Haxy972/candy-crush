@@ -7,7 +7,6 @@ PROJET CANDY CRUSH
 """
 
 #import matplotlib.pyplot as plt
-import numpy as np
 from random import randint 
 import utils.list_util as utl
 
@@ -71,6 +70,7 @@ def count_point(jeu):
 
 
 def deplacement(jeu, point, direction):
+    deplace = False
     nouveau_jeu = utl.copie_l(jeu)
     if direction == "z" or direction == "8":
         nouveau_jeu[point[1]][point[0]] = jeu[point[1]-1][point[0]]
@@ -84,7 +84,12 @@ def deplacement(jeu, point, direction):
     elif direction == "d" or direction == "6":
         nouveau_jeu[point[1]][point[0]] = jeu[point[1]][point[0]+1]
         nouveau_jeu[point[1]][point[0]+1] = jeu[point[1]][point[0]]
-    return nouveau_jeu
+    if utl.three_in_a_row(nouveau_jeu) == True:
+        deplace = True
+        jeu_rendu = nouveau_jeu
+    else:
+        jeu_rendu = jeu
+    return jeu_rendu, deplace
 
 
 def fin_jeu(score):
@@ -133,25 +138,33 @@ def saisie_coord(grille):
 #code du jeu
 
 jeu = init_jeu(int(input("taille de la grille: ")))
-print(np.array(jeu))
+utl.affiche_grille(jeu)
 print()
 print("coordonée en bas à gauche: (1, 1)")
 print()
 score = 0
+
 while fin_jeu(score) == False:
-    point_choisit = (int(input("Saisissez X : "))-1, len(jeu) - int( input("Saisissez Y : "))  )
-    print(point_choisit)
-    print()
-    print()
-    jeu = deplacement(jeu, point_choisit, input("deplacemnt_vers: "))
-    print(np.array(jeu))
+    deplace = False
+    while deplace == False:
+        print()
+        point_choisit = (int(input("Saisissez X : "))-1, len(jeu) - int( input("Saisissez Y : "))  )
+        print(point_choisit)
+        print()
+        print()
+        jeu, deplace = deplacement(jeu, point_choisit, input("deplacemnt_vers: "))
+        if deplace == True:
+            print("bien joué!")
+        else:
+            print("try again")
+    utl.affiche_grille(jeu)
     print()
     print()
     score += count_point(jeu)
     print(f"+ {count_point(jeu)} points ")
     print(f"score: {score}")
     jeu = utl.erase_line(jeu)
-    print(np.array(jeu))
+    utl.affiche_grille(jeu)
 
 
 

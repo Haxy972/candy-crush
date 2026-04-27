@@ -9,7 +9,7 @@ PROJET CANDY CRUSH
 import numpy as np
 #import matplotlib.pyplot as plt
 #from random import uniform  # génération nb aléatoire sous numpy
-np.set_printoptions(precision=2)  # limiter le nb de chiffres significatifs print
+ # limiter le nb de chiffres significatifs print
 
 
 
@@ -24,11 +24,15 @@ def grille_vide(taille):
 
     Returns
     -------
-    grille_np : matrice numpy de la grille vide
+    grille_vide :(liste) matrice de la grille vide
     """
-    grille_vide_np = np.zeros([taille, taille])
-    
-    return grille_vide_np
+    grille_vide = []
+    for i in range(taille):
+        ligne = []
+        for j in range(taille):
+            ligne.append(0)
+        grille_vide.append(ligne)
+    return grille_vide
 
 
 
