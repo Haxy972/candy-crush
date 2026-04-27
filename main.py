@@ -135,7 +135,7 @@ def saisie_coord(grille):
 
 
 
-#code du jeu
+#code du jeu niveau 2
 
 jeu = init_jeu(int(input("taille de la grille: ")))
 utl.affiche_grille(jeu)
