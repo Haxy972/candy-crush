@@ -164,6 +164,8 @@ while fin_jeu(score) == False:
     score += count_point(jeu)
     print(f"+ {count_point(jeu)} points ")
     print(f"score: {score}")
+    utl.affiche_grille(jeu)
+    print()
     jeu = detec.erase_line(jeu)
     utl.fall_l(jeu)
     utl.affiche_grille(jeu)
