@@ -6,7 +6,7 @@ Created on friday 24 08:53:00 2026
 
 PROJET CANDY CRUSH
 """
-import numpy as np
+
 #import matplotlib.pyplot as plt
 #from random import uniform  # génération nb aléatoire sous numpy
  # limiter le nb de chiffres significatifs print
@@ -96,14 +96,31 @@ def affiche_grille(jeu):
             print(jeu[i][j],end=" ")
             
             
-
+def zero_here(jeu, i, j):
+    zero = False
+    if jeu[i][j] == 0:
+        zero = True
+    return zero      
+          
+def zero_line(jeu):
+    zero_on_line = False
+    count = 0
+    for i in range(len(jeu)):
+        for j in range(len(jeu)):
+            if zero_here(jeu, i, j) == True:
+                count += 1      
+    if count > 0 :
+        zero_on_line = True
+    return zero_on_line
           
           
-          
-          
-          
-          
-          
+def replace_zero(jeu):
+    new_game = copie_l(jeu)        
+    while zero_line(jeu) == True:
+            for j in range(len(jeu)):
+                if zero_here(jeu, 0, j) == True:
+                    new_game[0][j] = randint(1, 4)                       
+    return new_game
           
           
           

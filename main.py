@@ -92,7 +92,21 @@ def deplacement(jeu, point, direction):
         jeu_rendu = jeu
     return jeu_rendu, deplace
 
-
+def new_candy(jeu):
+    new_game = utl.copie_l(jeu)        
+    while utl.zero_line(jeu) == True:
+        for i in range(len(jeu)):
+            for j in range(len(jeu)):
+                if utl.zero_here(jeu, i, j) == True:
+                    new_game[0][j] = randint(1, 4)                       
+    return new_game    
+    
+    
+    
+    
+    
+    
+    
 def fin_jeu(score):
     fin = False
     if score >= 100:
@@ -164,13 +178,15 @@ while fin_jeu(score) == False:
     score += count_point(jeu)
     print(f"+ {count_point(jeu)} points ")
     print(f"score: {score}")
-    utl.affiche_grille(jeu)
     print()
     jeu = detec.erase_line(jeu)
+    utl.affiche_grille(jeu)
+    print()
     utl.fall_l(jeu)
     utl.affiche_grille(jeu)
-
-
+    jeu = new_candy(jeu)
+    print()
+    utl.affiche_grille(jeu)
 
 
 
