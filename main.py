@@ -167,7 +167,7 @@ while fin_jeu(score) == False:
         print(point_choisit)
         print()
         print()
-        jeu, deplace = deplacement(jeu, point_choisit, input("deplacemnt_vers: "))
+        jeu, deplace = deplacement(jeu, point_choisit, input("deplacement_vers: "))
         if deplace == True:
             print("bien joué!")
         else:
