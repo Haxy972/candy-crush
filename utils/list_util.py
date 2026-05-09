@@ -10,8 +10,13 @@ PROJET CANDY CRUSH
 # couleurs personnalisées
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
+from matplotlib.patches import Circle
 from random import randint  # génération nb aléatoire sous numpy
- # limiter le nb de chiffres significatifs print
+
+# Variables globales
+fig = None
+ax = None
+circles = []
 
 def grille_vide(taille):
     """
@@ -85,12 +90,7 @@ def _fall_elem(liste: list, i: int, j: int) -> bool:
             fell = True
     return fell
     
-import matplotlib.pyplot as plt
-from matplotlib.patches import Circle
-# Variables globales
-fig = None
-ax = None
-circles = []
+
 
 def affiche_grille_graphique(jeu: list) -> None:
     """
