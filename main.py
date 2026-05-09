@@ -97,7 +97,7 @@ def new_candy(jeu):
     while utl.zero_line(jeu) == True:
         for i in range(len(jeu)):
             for j in range(len(jeu)):
-                if utl.zero_here(jeu, i, j) == True:
+                if utl.is_zero(jeu, i, j) == True:
                     new_game[0][j] = randint(1, 4)                       
     return new_game    
     
@@ -184,7 +184,7 @@ while fin_jeu(score) == False:
     print()
     utl.fall_l(jeu)
     utl.affiche_grille(jeu)
-    jeu = new_candy(jeu)
+    # jeu = new_candy(jeu)
     print()
     utl.affiche_grille(jeu)
 
