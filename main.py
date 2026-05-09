@@ -6,7 +6,7 @@ Created on friday 24 08:53:00 2026
 PROJET CANDY CRUSH
 """
 
-#import matplotlib.pyplot as plt
+
 from random import randint 
 import utils.list_util as utl
 import utils.detection as detec
@@ -90,22 +90,7 @@ def deplacement(jeu, point, direction):
         jeu_rendu = nouveau_jeu
     else:
         jeu_rendu = jeu
-    return jeu_rendu, deplace
-
-def new_candy(jeu):
-    new_game = utl.copie_l(jeu)        
-    while utl.zero_line(jeu) == True:
-        for i in range(len(jeu)):
-            for j in range(len(jeu)):
-                if utl.is_zero(jeu, i, j) == True:
-                    new_game[0][j] = randint(1, 4)                       
-    return new_game    
-    
-    
-    
-    
-    
-    
+    return jeu_rendu, deplace    
     
 def fin_jeu(score):
     fin = False
@@ -184,7 +169,6 @@ while fin_jeu(score) == False:
     print()
     utl.fall_l(jeu)
     utl.affiche_grille(jeu)
-    # jeu = new_candy(jeu)
     print()
     utl.affiche_grille(jeu)
 

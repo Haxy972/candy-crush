@@ -58,15 +58,17 @@ def fall_l(liste: list):
     None. 
     """
     size = len(liste)
-    
-    for i in range(size - 2, -1, -1): # size = 3 -> 0 , pas -1
-        for j in range(size): # 0 -> size = 3
-            row = i
-            column = j
-            while _fall_elem(liste, row, column):
-                row += 1
-                affiche_grille_graphique(liste)
-                plt.pause(0.1) # pause pour visualiser le mouvement
+    plt.pause(0.5) # pause pour visualiser les changements
+    while zero_line(liste) == True:
+        for i in range(size - 2, -1, -1): # size = 3 -> 0 , pas -1
+            for j in range(size): # 0 -> size = 3
+                row = i
+                column = j
+                while _fall_elem(liste, row, column):
+                    row += 1
+                    _new_candy(liste)
+                    affiche_grille_graphique(liste)
+                    plt.pause(0.1) # pause pour visualiser le mouvement
                 
             
 def _fall_elem(liste: list, i: int, j: int) -> bool:
@@ -88,9 +90,13 @@ def _fall_elem(liste: list, i: int, j: int) -> bool:
             liste[i + 1][j] = liste[i][j]
             liste[i][j] = 0
             fell = True
+        
     return fell
     
-
+def _new_candy(jeu):
+    for j in range(len(jeu)):
+        if is_zero(jeu, 0, j) == True:
+            jeu[0][j] = randint(1, 4)             
 
 def affiche_grille_graphique(jeu: list) -> None:
     """
