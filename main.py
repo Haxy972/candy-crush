@@ -106,7 +106,7 @@ def update_game(jeu):
     
 def fin_jeu(score):
     fin = False
-    if score >= 100:
+    if score >= 50:
         fin = True
     return fin
 
