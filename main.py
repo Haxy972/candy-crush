@@ -192,6 +192,7 @@ while fin_jeu(score) == False:
     utl.fall_l(jeu)
     utl.affiche_grille(jeu)
     while detec.three_in_a_row(jeu) == True:
+        score += count_point(jeu)
         jeu = update_game(jeu)
     print()
     
