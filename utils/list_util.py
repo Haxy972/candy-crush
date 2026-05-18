@@ -64,9 +64,10 @@ def fall_l(liste: list):
             for j in range(size): # 0 -> size = 3
                 row = i
                 column = j
+                _new_candy(liste) # génère les bonbons en haut de la grille
                 while _fall_elem(liste, row, column):
                     row += 1
-                    _new_candy(liste)
+                    _new_candy(liste) # génère quand ça tombe
                     affiche_grille_graphique(liste)
                     plt.pause(0.1) # pause pour visualiser le mouvement
                 
