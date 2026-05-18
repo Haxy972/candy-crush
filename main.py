@@ -194,12 +194,18 @@ while fin_jeu(score) == False:
     while detec.three_in_a_row(jeu) == True:
         score += count_point(jeu)
         jeu = update_game(jeu)
+        print()
+        print()
         print(f"+ {count_point(jeu)} points ")
         
     print()
     print(f"score: {score}")
     print()
 
+
+
+if fin_jeu(score) == True:
+    print(f"Tu as gagné avec un score de  {score}")
 
 
 
