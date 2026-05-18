@@ -58,7 +58,7 @@ def fall_l(liste: list):
     None. 
     """
     size = len(liste)
-    plt.pause(0.5) # pause pour visualiser les changements
+    plt.pause(0.2) # pause pour visualiser les changements
     while zero_line(liste) == True:
         for i in range(size - 2, -1, -1): # size = 3 -> 0 , pas -1
             for j in range(size): # 0 -> size = 3
