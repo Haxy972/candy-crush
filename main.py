@@ -91,6 +91,18 @@ def deplacement(jeu, point, direction):
     else:
         jeu_rendu = jeu
     return jeu_rendu, deplace    
+
+
+def update_game(jeu):
+    print()
+    nouveau_jeu = utl.copie_l(jeu)
+    nouveau_jeu = detec.erase_line(nouveau_jeu)
+    utl.affiche_grille(nouveau_jeu)
+    print()
+    utl.fall_l(nouveau_jeu)
+    utl.affiche_grille(nouveau_jeu)
+    return nouveau_jeu
+
     
 def fin_jeu(score):
     fin = False
@@ -169,7 +181,10 @@ while fin_jeu(score) == False:
     print()
     utl.fall_l(jeu)
     utl.affiche_grille(jeu)
+    while detec.three_in_a_row(jeu) == True:
+        jeu = update_game(jeu)
     print()
+    
     utl.affiche_grille(jeu)
 
 
