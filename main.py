@@ -114,8 +114,8 @@ def saisie_coord(grille):
     
     while test == True:
         try:
-            coord_x = int(input("Saisissez X : "))
-            coord_y = int(input("Saisissez Y : "))
+            coord_x = int(input("Saisissez X : ")) - 1
+            coord_y = len(grille) - int(input("Saisissez Y : "))
 
             
             if 0 <= coord_x < len(grille) and 0 <= coord_y < len(grille[0]):
@@ -136,11 +136,21 @@ def saisie_coord(grille):
 
 
 #code du jeu niveau 2
+jeu = None
+while jeu == None:
+    try:
+        taille = int(input("taille de la grille: "))
+        if taille < 3:
+            print("Veuillez saisir un nombre supérieur ou égal à 3")
+            continue
+        
+        jeu = init_jeu(taille)
+    except ValueError:
+        print("Veuillez saisir un nombre entier.")
 
-jeu = init_jeu(int(input("taille de la grille: ")))
 utl.affiche_grille(jeu)
 print()
-print("coordonée en bas à gauche: (1, 1)")
+print("Coordonnées en bas à gauche: (1, 1)")
 print()
 score = 0
 
@@ -148,7 +158,7 @@ while fin_jeu(score) == False:
     deplace = False
     while deplace == False:
         print()
-        point_choisit = (int(input("Saisissez X : "))-1, len(jeu) - int( input("Saisissez Y : "))  )
+        point_choisit = saisie_coord(jeu)
         print(point_choisit)
         print()
         print()
