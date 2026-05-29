@@ -71,6 +71,26 @@ def count_point(jeu):
 
 
 def deplacement(jeu, point, direction):
+    """
+    peermet de déplacer le bonbon choisit dans une direction choisit
+    
+    Parameters
+    ----------
+    jeu : (list 2D) grille de bonbon
+    point : (list) coordonnée x et y du bonbon choisit.
+    direction : (chaine de caractère) 
+    permet de choisir la direction dans laquel on veut déplacer le bonbon
+    "z,q,s,d" les mêmes direction que pour les jeux vidéos. 
+    "8,4,2,6" Les mêmes direction que pour les flèches du numpad.
+
+    Returns
+    -------
+    jeu_rendu : TYPE
+        DESCRIPTION.
+    deplace : TYPE
+        DESCRIPTION.
+
+    """
     deplace = False
     nouveau_jeu = utl.copie_l(jeu)
     if direction == "z" or direction == "8":
@@ -105,6 +125,18 @@ def update_game(jeu):
 
     
 def fin_jeu(score):
+    """
+    en fonction du score nous permet de savoir si nous avons fini le jeu..
+    
+    Parameters
+    ----------
+    score : (int) valeur de nombres de lignes de 3 faits.
+
+    Returns
+    -------
+    fin : (boolean) dit si on a fini.
+
+    """
     fin = False
     if score >= 50:
         fin = True

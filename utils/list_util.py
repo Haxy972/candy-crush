@@ -181,12 +181,42 @@ def affiche_grille(jeu):
     affiche_grille_graphique(jeu)
             
 def is_zero(jeu, i, j):
+    """
+    
+
+    Parameters
+    ----------
+    jeu : TYPE
+        DESCRIPTION.
+    i : TYPE
+        DESCRIPTION.
+    j : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    zero : TYPE
+        DESCRIPTION.
+
+    """
     zero = False
     if jeu[i][j] == 0:
         zero = True
     return zero      
           
 def zero_line(jeu):
+    """
+    
+
+    Parameters
+    ----------
+    jeu : (liste 2D) grille de bonbon 
+
+    Returns
+    -------
+    zero_on_line : (b) 
+
+    """
     zero_on_line = False
     count = 0
     for i in range(len(jeu)):
@@ -199,6 +229,18 @@ def zero_line(jeu):
           
           
 def replace_zero(jeu):
+    """
+    
+
+    Parameters
+    ----------
+    jeu : (liste 2D) grille de bonbon
+
+    Returns
+    -------
+    new_game : (liste 2D) grille de bonbon aprés mise a jour
+
+    """
     new_game = copie_l(jeu)        
     while zero_line(jeu) == True:
             for j in range(len(jeu)):
