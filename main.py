@@ -201,6 +201,8 @@ while fin_jeu(score) == False:
     print()
     print(f"score: {score}")
     print()
+    if detec.combinaison_possible(jeu) == True:
+        print("Continue! Il reste des possibilitées!")
 
 
 

@@ -1,5 +1,49 @@
 import utils.list_util as utl
 
+def combinaison_possible(jeu):
+    comb = False
+    count = 0
+    for i in range(1, len(jeu)):
+        for j in range(1, len(jeu)-1):
+            if three_in_a_line_possible1(jeu, i, j) == True:
+                count += 1
+            elif three_in_a_line_possible3(jeu, i, j) == True:
+                count += 1
+            elif three_in_a_line_possible5(jeu, i, j) == True:
+                count += 1
+    for i in range( len(jeu)-1):
+        for j in range(1, len(jeu)-1):
+            if three_in_a_line_possible2(jeu, i, j) == True:
+                count += 1
+            elif three_in_a_line_possible4(jeu, i, j) == True:
+                count += 1
+            elif three_in_a_line_possible6(jeu, i, j) == True:
+                count += 1
+                           
+    for i in range(1, len(jeu)-1):
+        for j in range(len(jeu)-1):
+            if three_in_a_column_possible1(jeu, i, j) == True:
+                count += 1 
+            elif three_in_a_column_possible3(jeu, i, j) == True:
+                count += 1
+            elif three_in_a_column_possible5(jeu, i, j) == True:
+                count += 1
+    for i in range(1, len(jeu)-1):
+        for j in range(1, len(jeu)):
+            if three_in_a_column_possible2(jeu, i, j) == True:
+                count += 1 
+            elif three_in_a_column_possible4(jeu, i, j) == True:
+                count += 1
+            elif three_in_a_column_possible6(jeu, i, j) == True:
+                count += 1
+                
+    if count > 0 :
+        comb = True
+    return comb 
+
+
+
+
 def three_in_a_row(jeu):
     """
     verifie si il y a trois ensemble dans le jeu
@@ -83,3 +127,82 @@ def three_in_a_column(jeu, y, x):
         col = True
     return col
  
+#les possibilitées en lignes
+def three_in_a_line_possible1(jeu, y, x):
+    line = False
+    if jeu[y][x-1] == jeu[y][x+1] == jeu[y-1][x]:
+        line = True
+    return line    
+ 
+def three_in_a_line_possible2(jeu, y, x):
+    line = False
+    if jeu[y][x-1] == jeu[y][x+1] == jeu[y+1][x]:
+        line = True
+    return line
+
+
+def three_in_a_line_possible3(jeu, y, x):
+    line = False
+    if jeu[y][x-1] == jeu[y][x] == jeu[y-1][x+1]:
+        line = True
+    return line    
+
+def three_in_a_line_possible4(jeu, y, x):
+    line = False
+    if jeu[y][x-1] == jeu[y][x] == jeu[y+1][x+1]:
+        line = True
+    return line
+
+def three_in_a_line_possible5(jeu, y, x):
+    line = False
+    if jeu[y-1][x-1] == jeu[y][x] == jeu[y][x+1]:
+        line = True
+    return line
+
+def three_in_a_line_possible6(jeu, y, x):
+    line = False
+    if jeu[y+1][x-1] == jeu[y][x] == jeu[y][x+1]:
+        line = True
+    return line
+
+
+
+
+
+
+#les possibilitées en colonnes
+def three_in_a_column_possible1(jeu, y, x):
+    col = False
+    if jeu[y-1][x] == jeu[y+1][x] == jeu[y][x+1]:
+        col = True
+    return col
+
+def three_in_a_column_possible2(jeu, y, x):
+    col = False
+    if jeu[y-1][x] == jeu[y+1][x] == jeu[y][x-1]:
+        col = True
+    return col
+
+def three_in_a_column_possible3(jeu, y, x):
+    col = False
+    if jeu[y][x] == jeu[y+1][x] == jeu[y-1][x+1]:
+        col = True
+    return col
+
+def three_in_a_column_possible4(jeu, y, x):
+    col = False
+    if jeu[y][x] == jeu[y+1][x] == jeu[y-1][x-1]:
+        col = True
+    return col
+
+def three_in_a_column_possible5(jeu, y, x):
+    col = False
+    if jeu[y][x] == jeu[y-1][x] == jeu[y+1][x+1]:
+        col = True
+    return col
+
+def three_in_a_column_possible6(jeu, y, x):
+    col = False
+    if jeu[y][x] == jeu[y-1][x] == jeu[y+1][x-1]:
+        col = True
+    return col
