@@ -219,7 +219,7 @@ while est_fini == False:
 
 
 print(f"Tu as gagné avec un score de  {score}")
-utl.pause(2)
+utl.pause(2) # 2 secondes avant la fermeture du jeu un fois fini.
 
 
 
