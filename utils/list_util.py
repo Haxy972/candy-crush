@@ -95,6 +95,13 @@ def _fall_elem(liste: list, i: int, j: int) -> bool:
     return fell
     
 def _new_candy(jeu):
+    """
+    Création d'un nouveau bonbon en haut de la grille partout où il n'y a pas de bonbon
+    Parameters
+    ----------
+    jeu (numpy.ndarray): Liste de jeu
+    """
+    
     for j in range(len(jeu)):
         if is_zero(jeu, 0, j) == True:
             jeu[0][j] = randint(1, 4)             
@@ -172,9 +179,6 @@ def affiche_grille(jeu):
         for j in range(len(jeu[i])):
             print(jeu[i][j],end=" ")
     affiche_grille_graphique(jeu)
-            
-
-            
             
 def is_zero(jeu, i, j):
     zero = False
