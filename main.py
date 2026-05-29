@@ -166,7 +166,9 @@ print("Coordonnées en bas à gauche: (1, 1)")
 print()
 score = 0
 
-while fin_jeu(score) == False:
+
+est_fini = False
+while est_fini == False:
     deplace = False
     while deplace == False:
         print()
@@ -201,13 +203,16 @@ while fin_jeu(score) == False:
     print()
     print(f"score: {score}")
     print()
+    est_fini = fin_jeu(score)
     if detec.combinaison_possible(jeu) == True:
         print("Continue! Il reste des possibilitées!")
+    elif detec.combinaison_possible(jeu) == False:
+        est_fini = True
+        print("Plus de possibilitées!")
+        
 
 
-
-if fin_jeu(score) == True:
-    print(f"Tu as gagné avec un score de  {score}")
+print(f"Tu as gagné avec un score de  {score}")
 
 
 
