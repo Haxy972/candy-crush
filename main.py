@@ -12,7 +12,10 @@ import utils.list_util as utl
 import utils.detection as detec
 
 
-
+###
+# █▀ ▄▀▄ █▄ █ ▄▀▀ ▀█▀ █ ▄▀▄ █▄ █ ▄▀▀ 
+# █▀ ▀▄▀ █ ▀█ ▀▄▄  █  █ ▀▄▀ █ ▀█ ▄█▀ 
+###
 
 def init_jeu(taille):
     """
@@ -143,11 +146,14 @@ def saisie_coord(grille):
 
 
 
-
-
-
+#########################
+#  █▀▄ █▀▄ ▄▀▄ ▄▀  
+#  █▀  █▀▄ ▀▄▀ ▀▄█ 
+#########################
 
 #code du jeu niveau 2
+
+
 jeu = None
 while jeu == None:
     try:
@@ -213,6 +219,7 @@ while est_fini == False:
 
 
 print(f"Tu as gagné avec un score de  {score}")
+utl.pause(2)
 
 
 

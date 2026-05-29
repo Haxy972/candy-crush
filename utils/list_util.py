@@ -37,6 +37,18 @@ def grille_vide(taille):
     return grille_vide
    
 def copie_l(liste):
+    """
+    Permet de copier la liste à l'identique.
+    Est utile pour éviter la muabilité des listes
+    
+    Parameters
+    ----------
+    liste : (list) La liste que l'on veut copier
+
+    Returns
+    -------
+    liste_c :(list) Liste copiée
+    """
     liste_c = []
     for i in range(len(liste)):
         ligne = []
@@ -45,6 +57,20 @@ def copie_l(liste):
         liste_c.append(ligne)
     return liste_c
 
+
+def pause(time: float) -> None:
+    """
+    Permet de mettre sur pause le graphique pendant quelques secondes
+    
+    Parameters
+    ----------
+    liste (numpy.ndarray): Liste de jeu
+    Returns
+    -------
+    None. 
+    """
+    plt.pause(time)
+    
 
 def fall_l(liste: list):
     """
@@ -58,7 +84,7 @@ def fall_l(liste: list):
     None. 
     """
     size = len(liste)
-    plt.pause(0.2) # pause pour visualiser les changements
+    pause(0.2) # pause pour visualiser les changements
     while zero_line(liste) == True:
         for i in range(size - 2, -1, -1): # size = 3 -> 0 , pas -1
             for j in range(size): # 0 -> size = 3
@@ -69,7 +95,7 @@ def fall_l(liste: list):
                     row += 1
                     _new_candy(liste) # génère quand ça tombe
                     affiche_grille_graphique(liste)
-                    plt.pause(0.1) # pause pour visualiser le mouvement
+                    pause(0.1) # pause pour visualiser le mouvement
                 
             
 def _fall_elem(liste: list, i: int, j: int) -> bool:
@@ -94,7 +120,7 @@ def _fall_elem(liste: list, i: int, j: int) -> bool:
         
     return fell
     
-def _new_candy(jeu):
+def _new_candy(jeu: list):
     """
     Création d'un nouveau bonbon en haut de la grille partout où il n'y a pas de bonbon
     Parameters
