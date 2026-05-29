@@ -57,6 +57,33 @@ def copie_l(liste):
         liste_c.append(ligne)
     return liste_c
 
+def anim_fin(liste: list) -> None:
+    reverse = False
+    for i in range(len(liste)):
+        for j in range(len(liste[i])):
+            if reverse:
+                liste[i][len(liste[i]) -1 -j] = 0
+            else:
+                liste[i][j] = 0
+            pause(0.1)
+            affiche_grille_graphique(liste)
+            reverse = not reverse
+
+    change_all_colors(liste, 1)
+    change_all_colors(liste, 0)
+    change_all_colors(liste, 1)
+    change_all_colors(liste, 0)
+    
+    
+    
+def change_all_colors(liste, color):
+    for i in range(len(liste)):
+        for j in range(len(liste[i])):
+            liste[i][j] = color
+    affiche_grille_graphique(liste)
+    pause(0.2)
+    
+
 
 def pause(time: float) -> None:
     """
@@ -189,6 +216,7 @@ def affiche_grille_graphique(jeu: list) -> None:
     # MAJ: affichage
     fig.canvas.draw()
     fig.canvas.flush_events()
+
     
 def affiche_grille(jeu):
     """
