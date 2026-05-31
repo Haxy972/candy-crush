@@ -141,15 +141,10 @@ def fin_jeu(score):
 
     """
     fin = False
-    if score >= 50:
+    if score >= 5:
         fin = True
     return fin
 
-def detecte_coordonnees_combinaison (griLle, i, j):
-  """
-  Renvoie une liste contenant les coordonnées de tous les bonbons
-  appartenant à la combinaison du bonbon ( i , j ) .
-  """
 
 def saisie_coord(grille):
     """ 
@@ -179,8 +174,8 @@ def saisie_coord(grille):
 
 
 #########################
-#  █▀▄ █▀▄ ▄▀▄ ▄▀  
-#  █▀  █▀▄ ▀▄▀ ▀▄█ 
+#   █▀▄ █▀▄ ▄▀▄ ▄▀      #
+#   █▀  █▀▄ ▀▄▀ ▀▄█     #
 #########################
 
 #code du jeu niveau 2

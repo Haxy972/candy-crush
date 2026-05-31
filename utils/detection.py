@@ -1,6 +1,15 @@
 import utils.list_util as utl
 
-def combinaison_possible(jeu):
+def combinaison_possible(jeu: list) -> bool:
+    """
+    Verifie si il y a une combinaison possible dans le jeu
+    Parameters
+    ----------
+    jeu : (liste) le jeu de candy crush
+    Returns
+    -------
+    comb : (bool) vrai s'il y a une combinaison possible, faux sinon
+    """
     comb = False
     count = 0
     for i in range(1, len(jeu)):
@@ -72,6 +81,17 @@ def three_in_a_row(jeu):
 
 
 def erase_line(jeu):
+    """
+    Efface les lignes ou colonnes de trois ou plus dans le jeu et les remplace par des 0
+    Parameters
+    ----------
+    jeu : (liste) le jeu de candy crush
+
+    Returns
+    -------
+    nouveau_jeu : (liste) le jeu mis à jour
+    """
+    
     nouveau_jeu = utl.copie_l(jeu)
     for i in range(len(jeu)):
         for j in range(1, len(jeu)-1):
@@ -83,7 +103,6 @@ def erase_line(jeu):
                 nouveau_jeu[i][j] = nouveau_jeu[i-1][j] = nouveau_jeu[i+1][j] = 0     
    
     return nouveau_jeu
-
 
 
 
@@ -127,7 +146,11 @@ def three_in_a_column(jeu, y, x):
         col = True
     return col
  
-#les possibilitées en lignes
+##-------------------------------------------------------##
+## DETECTION DES COMBINAISONS POSSIBLES 12 CAS POSSIBLES ##
+##-------------------------------------------------------##
+
+# les possibilitées en lignes
 def three_in_a_line_possible1(jeu, y, x):
     line = False
     if jeu[y][x-1] == jeu[y][x+1] == jeu[y-1][x]:
@@ -165,12 +188,7 @@ def three_in_a_line_possible6(jeu, y, x):
         line = True
     return line
 
-
-
-
-
-
-#les possibilitées en colonnes
+# les possibilitées en colonnes
 def three_in_a_column_possible1(jeu, y, x):
     col = False
     if jeu[y-1][x] == jeu[y+1][x] == jeu[y][x+1]:

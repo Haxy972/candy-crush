@@ -58,6 +58,20 @@ def copie_l(liste):
     return liste_c
 
 def anim_fin(liste: list) -> None:
+    """
+    Effectue une jolie animation de fin en parcourant toutes les cases *
+    et en changeant les bonbons de couleurs successivement.
+    D'abord un parcours en serpentant puis 4 changements successives clignotant rouge/noir
+    
+    Parameters
+    ----------
+    liste : (list) La liste de jeu
+
+    Returns
+    -------
+    None
+    """
+    
     reverse = False
     for i in range(len(liste)):
         for j in range(len(liste[i])):
@@ -77,6 +91,19 @@ def anim_fin(liste: list) -> None:
     
     
 def change_all_colors(liste, color):
+    """
+    Change tous les bonbons de couleurs dans la grille de la couleur souhaité
+    
+    Parameters
+    ----------
+    liste : (list) La liste de jeu
+    color : (int) La couleur souhaité
+    
+    Returns
+    -------
+    None
+    """
+    
     for i in range(len(liste)):
         for j in range(len(liste[i])):
             liste[i][j] = color
@@ -135,7 +162,7 @@ def _fall_elem(liste: list, i: int, j: int) -> bool:
 
     Returns
     -------
-    Bool. -> Retourne vrai si le bonbon tombe, faux si il est bloqué.
+    fell (bool) -> Retourne vrai si le bonbon tombe, faux si il est bloqué.
     """
     fell = False # 1 0
     if i < len(liste) - 1:
@@ -154,7 +181,6 @@ def _new_candy(jeu: list):
     ----------
     jeu (numpy.ndarray): Liste de jeu
     """
-    
     for j in range(len(jeu)):
         if is_zero(jeu, 0, j) == True:
             jeu[0][j] = randint(1, 4)             
@@ -236,22 +262,17 @@ def affiche_grille(jeu):
             
 def is_zero(jeu, i, j):
     """
-    
+    Retourne vrai si la case (i, j) de la grille est vide (0), faux sinon.
 
     Parameters
     ----------
-    jeu : TYPE
-        DESCRIPTION.
-    i : TYPE
-        DESCRIPTION.
-    j : TYPE
-        DESCRIPTION.
+    jeu : (liste) la grille de jeu
+    i : (int) la ligne de la case
+    j : (int) la colonne de la case
 
     Returns
     -------
-    zero : TYPE
-        DESCRIPTION.
-
+    zero : (bool) vrai si la case est vide, faux sinon
     """
     zero = False
     if jeu[i][j] == 0:
@@ -260,15 +281,14 @@ def is_zero(jeu, i, j):
           
 def zero_line(jeu):
     """
-    
-
+    Retourne vrai s'il y a au moins une case vide (0) dans la grille, faux sinon.
     Parameters
     ----------
     jeu : (liste 2D) grille de bonbon 
 
     Returns
     -------
-    zero_on_line : (b) 
+    zero_on_line : (bool) vrai s'il y a au moins une case vide, faux sinon
 
     """
     zero_on_line = False
@@ -280,29 +300,6 @@ def zero_line(jeu):
     if count > 0 :
         zero_on_line = True
     return zero_on_line
-          
-          
-def replace_zero(jeu):
-    """
-    
-
-    Parameters
-    ----------
-    jeu : (liste 2D) grille de bonbon
-
-    Returns
-    -------
-    new_game : (liste 2D) grille de bonbon aprés mise a jour
-
-    """
-    new_game = copie_l(jeu)        
-    while zero_line(jeu) == True:
-            for j in range(len(jeu)):
-                if is_zero(jeu, 0, j) == True:
-                    new_game[0][j] = randint(1, 4)                       
-    return new_game
-          
-          
           
           
           
