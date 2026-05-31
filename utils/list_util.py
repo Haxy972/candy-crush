@@ -57,7 +57,7 @@ def copie_l(liste):
         liste_c.append(ligne)
     return liste_c
 
-def anim_fin(liste: list) -> None:
+def anim_fin(liste: list, points: int) -> None:
     """
     Effectue une jolie animation de fin en parcourant toutes les cases *
     et en changeant les bonbons de couleurs successivement.
@@ -66,6 +66,7 @@ def anim_fin(liste: list) -> None:
     Parameters
     ----------
     liste : (list) La liste de jeu
+    points : (int) Le nombre de points obtenus
 
     Returns
     -------
@@ -80,17 +81,17 @@ def anim_fin(liste: list) -> None:
             else:
                 liste[i][j] = 0
             pause(0.1)
-            affiche_grille_graphique(liste)
+            affiche_grille_graphique(liste, points)
             reverse = not reverse
 
-    change_all_colors(liste, 1)
-    change_all_colors(liste, 0)
-    change_all_colors(liste, 1)
-    change_all_colors(liste, 0)
+    change_all_colors(liste, 1, points)
+    change_all_colors(liste, 0, points)
+    change_all_colors(liste, 1, points)
+    change_all_colors(liste, 0, points)
     
     
     
-def change_all_colors(liste, color):
+def change_all_colors(liste, color, points):
     """
     Change tous les bonbons de couleurs dans la grille de la couleur souhaité
     
@@ -98,6 +99,7 @@ def change_all_colors(liste, color):
     ----------
     liste : (list) La liste de jeu
     color : (int) La couleur souhaité
+    points : (int) Le nombre de points obtenus
     
     Returns
     -------
@@ -107,7 +109,7 @@ def change_all_colors(liste, color):
     for i in range(len(liste)):
         for j in range(len(liste[i])):
             liste[i][j] = color
-    affiche_grille_graphique(liste)
+    affiche_grille_graphique(liste, points)
     pause(0.2)
     
 
@@ -126,13 +128,15 @@ def pause(time: float) -> None:
     plt.pause(time)
     
 
-def fall_l(liste: list):
+def fall_l(liste: list, points: int) -> None:
     """
     La fonction fait tomber les bonbons de la liste vers le bas
     
     Parameters
     ----------
     liste (numpy.ndarray): Liste de jeu
+    points : (int) Le nombre de points obtenus
+    
     Returns
     -------
     None. 
@@ -148,7 +152,7 @@ def fall_l(liste: list):
                 while _fall_elem(liste, row, column):
                     row += 1
                     _new_candy(liste) # génère quand ça tombe
-                    affiche_grille_graphique(liste)
+                    affiche_grille_graphique(liste, points)
                     pause(0.1) # pause pour visualiser le mouvement
                 
             
@@ -185,19 +189,21 @@ def _new_candy(jeu: list):
         if is_zero(jeu, 0, j) == True:
             jeu[0][j] = randint(1, 4)             
 
-def affiche_grille_graphique(jeu: list) -> None:
+def affiche_grille_graphique(jeu: list, points: int) -> None:
     """
     Affiche la grille de jeu graphiquement à l'aide de matplotlib.
     Parameters
     # Doc: https://matplotlib.org/stable/index.html
     ----------
     jeu : liste numpy du jeu.
+    points : (int) Le nombre de points.
     Returns -> None
     -------
     """
     global fig, ax, circles
     dict_colors = {0: 'black', 1: 'red', 2: 'green', 3: 'blue', 4: 'yellow'}
     n = len(jeu)
+    
     
     if fig is None:
         plt.ion() # Empêche le blocage du programme lors de l'affichage
@@ -238,13 +244,17 @@ def affiche_grille_graphique(jeu: list) -> None:
                 circles[i][j].set_color(
                     dict_colors[jeu[i][j]]
                 )
-
+    
     # MAJ: affichage
     fig.canvas.draw()
     fig.canvas.flush_events()
+    if ax is not None:
+        ax.set_title(f'Candy Crush: {points} points')
+    
+    
 
     
-def affiche_grille(jeu):
+def affiche_grille(jeu, points):
     """
     Parameters
     ----------
@@ -258,7 +268,7 @@ def affiche_grille(jeu):
         print()
         for j in range(len(jeu[i])):
             print(jeu[i][j],end=" ")
-    affiche_grille_graphique(jeu)
+    affiche_grille_graphique(jeu, points)
             
 def is_zero(jeu, i, j):
     """

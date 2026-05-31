@@ -116,14 +116,14 @@ def deplacement(jeu, point, direction):
     return jeu_rendu, deplace    
 
 
-def update_game(jeu):
+def update_game(jeu, score):
     print()
     nouveau_jeu = utl.copie_l(jeu)
     nouveau_jeu = detec.erase_line(nouveau_jeu)
-    utl.affiche_grille(nouveau_jeu)
+    utl.affiche_grille(nouveau_jeu, score)
     print()
-    utl.fall_l(nouveau_jeu)
-    utl.affiche_grille(nouveau_jeu)
+    utl.fall_l(nouveau_jeu, score)
+    utl.affiche_grille(nouveau_jeu, score)
     return nouveau_jeu
 
     
@@ -193,7 +193,7 @@ while jeu == None:
     except ValueError:
         print("Veuillez saisir un nombre entier.")
 
-utl.affiche_grille(jeu)
+utl.affiche_grille(jeu, 0)
 print()
 print("Coordonnées en bas à gauche: (1, 1)")
 print()
@@ -214,7 +214,7 @@ while est_fini == False:
             print("bien joué!")
         else:
             print("try again")
-    utl.affiche_grille(jeu)
+    utl.affiche_grille(jeu, score)
     print()
     print()
     score += count_point(jeu)
@@ -222,13 +222,13 @@ while est_fini == False:
     print(f"score: {score}")
     print()
     jeu = detec.erase_line(jeu)
-    utl.affiche_grille(jeu)
+    utl.affiche_grille(jeu, score)
     print()
-    utl.fall_l(jeu)
-    utl.affiche_grille(jeu)
+    utl.fall_l(jeu, score)
+    utl.affiche_grille(jeu, score)
     while detec.three_in_a_row(jeu) == True:
         score += count_point(jeu)
-        jeu = update_game(jeu)
+        jeu = update_game(jeu, score)
         print()
         print()
         print(f"+ {count_point(jeu)} points ")
@@ -247,7 +247,7 @@ while est_fini == False:
 
 print(f"Tu as gagné avec un score de  {score}")
 utl.pause(1)
-utl.anim_fin(jeu)
+utl.anim_fin(jeu, score)
 utl.pause(1) # 2 secondes avant la fermeture du jeu un fois fini.
 
 
