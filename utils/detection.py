@@ -1,3 +1,11 @@
+"""
+Created on friday 24 08:53:00 2026
+
+@author: Anthony
+
+PROJET CANDY CRUSH
+"""
+
 import utils.list_util as utl
 
 def combinaison_possible(jeu: list) -> bool:

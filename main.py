@@ -1,8 +1,7 @@
 """
 Created on friday 24 08:53:00 2026
 
-@author: Haxy
-
+@author: Léo, Anthony et Diego
 PROJET CANDY CRUSH
 """
 
@@ -17,7 +16,7 @@ import utils.detection as detec
 # █▀ ▀▄▀ █ ▀█ ▀▄▄  █  █ ▀▄▀ █ ▀█ ▄█▀ 
 ###
 
-def init_jeu(taille):
+def init_jeu(taille): # Antho
     """
     Parameters
     ----------
@@ -49,7 +48,7 @@ def init_jeu(taille):
 
 
 
-def count_point(jeu):
+def count_point(jeu): # Antho
     """
     compte le nomnbre de point à un instant donnée
     Parameters
@@ -73,7 +72,7 @@ def count_point(jeu):
     return count
 
 
-def deplacement(jeu, point, direction):
+def deplacement(jeu, point, direction): # Antho
     """
     peermet de déplacer le bonbon choisit dans une direction choisit
     
@@ -116,7 +115,7 @@ def deplacement(jeu, point, direction):
     return jeu_rendu, deplace    
 
 
-def update_game(jeu, score):
+def update_game(jeu, score): #Antho
     print()
     nouveau_jeu = utl.copie_l(jeu)
     nouveau_jeu = detec.erase_line(nouveau_jeu)
@@ -127,7 +126,7 @@ def update_game(jeu, score):
     return nouveau_jeu
 
     
-def fin_jeu(score):
+def fin_jeu(score): #Antho
     """
     en fonction du score nous permet de savoir si nous avons fini le jeu..
     
@@ -141,12 +140,12 @@ def fin_jeu(score):
 
     """
     fin = False
-    if score >= 5:
+    if score >= 20:
         fin = True
     return fin
 
 
-def saisie_coord(grille):
+def saisie_coord(grille): # Diego
     """ 
     Permet de saisir les coordoonées du bonbon que l'on voudra déplacer
     param : grille (liste 2D)
@@ -177,7 +176,7 @@ def saisie_coord(grille):
 #   █▀▄ █▀▄ ▄▀▄ ▄▀      #
 #   █▀  █▀▄ ▀▄▀ ▀▄█     #
 #########################
-
+# Tous
 #code du jeu niveau 2
 
 

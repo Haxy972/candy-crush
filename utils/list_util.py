@@ -2,7 +2,7 @@
 """
 Created on friday 24 08:53:00 2026
 
-@author: Mecdo
+@author: Léo, Anthony & Diego
 
 PROJET CANDY CRUSH
 """
@@ -18,7 +18,7 @@ fig = None
 ax = None
 circles = []
 
-def grille_vide(taille):
+def grille_vide(taille): # Antho
     """
     Parameters
     ----------
@@ -36,7 +36,7 @@ def grille_vide(taille):
         grille_vide.append(ligne)
     return grille_vide
    
-def copie_l(liste):
+def copie_l(liste): # Antho
     """
     Permet de copier la liste à l'identique.
     Est utile pour éviter la muabilité des listes
@@ -57,7 +57,7 @@ def copie_l(liste):
         liste_c.append(ligne)
     return liste_c
 
-def anim_fin(liste: list, points: int) -> None:
+def anim_fin(liste: list, points: int) -> None: # Léo
     """
     Effectue une jolie animation de fin en parcourant toutes les cases *
     et en changeant les bonbons de couleurs successivement.
@@ -91,7 +91,7 @@ def anim_fin(liste: list, points: int) -> None:
     
     
     
-def change_all_colors(liste, color, points):
+def change_all_colors(liste, color, points): # Léo
     """
     Change tous les bonbons de couleurs dans la grille de la couleur souhaité
     
@@ -114,7 +114,7 @@ def change_all_colors(liste, color, points):
     
 
 
-def pause(time: float) -> None:
+def pause(time: float) -> None: # Léo
     """
     Permet de mettre sur pause le graphique pendant quelques secondes
     
@@ -128,7 +128,7 @@ def pause(time: float) -> None:
     plt.pause(time)
     
 
-def fall_l(liste: list, points: int) -> None:
+def fall_l(liste: list, points: int) -> None: # Léo
     """
     La fonction fait tomber les bonbons de la liste vers le bas
     
@@ -156,7 +156,7 @@ def fall_l(liste: list, points: int) -> None:
                     pause(0.1) # pause pour visualiser le mouvement
                 
             
-def _fall_elem(liste: list, i: int, j: int) -> bool:
+def _fall_elem(liste: list, i: int, j: int) -> bool: # Léo
     """
     Parameters
     ----------
@@ -178,7 +178,7 @@ def _fall_elem(liste: list, i: int, j: int) -> bool:
         
     return fell
     
-def _new_candy(jeu: list):
+def _new_candy(jeu: list): # Léo
     """
     Création d'un nouveau bonbon en haut de la grille partout où il n'y a pas de bonbon
     Parameters
@@ -189,7 +189,7 @@ def _new_candy(jeu: list):
         if is_zero(jeu, 0, j) == True:
             jeu[0][j] = randint(1, 4)             
 
-def affiche_grille_graphique(jeu: list, points: int) -> None:
+def affiche_grille_graphique(jeu: list, points: int) -> None: # Léo
     """
     Affiche la grille de jeu graphiquement à l'aide de matplotlib.
     Parameters
@@ -254,7 +254,7 @@ def affiche_grille_graphique(jeu: list, points: int) -> None:
     
 
     
-def affiche_grille(jeu, points):
+def affiche_grille(jeu, points): # Tous
     """
     Parameters
     ----------
@@ -270,7 +270,7 @@ def affiche_grille(jeu, points):
             print(jeu[i][j],end=" ")
     affiche_grille_graphique(jeu, points)
             
-def is_zero(jeu, i, j):
+def is_zero(jeu, i, j): # Antho
     """
     Retourne vrai si la case (i, j) de la grille est vide (0), faux sinon.
 
@@ -289,7 +289,7 @@ def is_zero(jeu, i, j):
         zero = True
     return zero      
           
-def zero_line(jeu):
+def zero_line(jeu): # Antho
     """
     Retourne vrai s'il y a au moins une case vide (0) dans la grille, faux sinon.
     Parameters
